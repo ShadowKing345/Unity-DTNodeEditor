@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\alexa\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\alexa\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Unity-DTNodeEditor.-932444114.00" t="ExcludeRecursive" />
+    <e p="C:\Users\alexa\Desktop\Project\Unity Projects\Unity-DTNodeEditor" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="DTNodeEditorWindow.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Unity-DTNodeEditor.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
