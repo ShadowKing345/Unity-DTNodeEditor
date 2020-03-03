@@ -4,23 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Dialog_Tether
+public class DialogTether
 {
     public string _text;
-    public Dialog_Base _destination;
+    public DialogBase _destination;
 
-    public Dialog_Tether(string text)
+    public DialogTether(string text)
     {
         _text = text;
     }
     
-    public Dialog_Tether(string text, Dialog_Base destination)
+    public DialogTether(string text, DialogBase destination)
     {
         _text = text;
         _destination = destination;
     }
 
-    public Dialog_Tether(Dialog_Base destination)
+    public DialogTether(DialogBase destination)
     {
         _text = "";
         _destination = destination;

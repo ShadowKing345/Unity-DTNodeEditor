@@ -6,9 +6,9 @@ using UnityEditor.Callbacks;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Dialog/Dialog Tree")]
-public class Dialog_Tree : ScriptableObject
+public class DialogTree : ScriptableObject
 {
     public string _id;
-    public Dialog_Base _start_node;
-    public Dialog_Base[] _node_references; 
+    public DialogBase _start_node;
+    public DialogBase[] _node_references; 
 }
