@@ -9,13 +9,11 @@
         <e p="Dialog Tree" t="Include">
           <e p="Dialog" t="Include">
             <e p="Dialog_Base.cs" t="Include" />
-            <e p="Dialog_Simple_Text_Scriptable_Object.cs" t="Include" />
-            <e p="Dialog_Yes_No_Scriptable_Object.cs" t="Include" />
+            <e p="Dialog_Okay.cs" t="Include" />
+            <e p="Dialog_Yes_No.cs" t="Include" />
           </e>
-          <e p="Dialog_Tree_Scriptable_Object.cs" t="Include" />
-        </e>
-        <e p="Dialog Tree Editor" t="Include">
-          <e p="DTNodeEditorWindow.cs" t="Include" />
+          <e p="Dialog_Tether.cs" t="Include" />
+          <e p="Dialog_Tree.cs" t="Include" />
         </e>
         <e p="Dialog_Manager.cs" t="Include" />
       </e>
