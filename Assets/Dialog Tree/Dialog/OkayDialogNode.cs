@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Dialog/Dialog Types/Okay Dialog")]
-public class Dialog_Okay : DialogBase
+public class OkayDialogNode : BasicDialogNode
 {
-    public Dialog_Okay() : base()
+    public OkayDialogNode() : base()
     {
         _nexts = new[] {new DialogTether("Okay")};
     }
 
-    public Dialog_Okay(string okayMessage, DialogBase okayDestination) : base()
+    public OkayDialogNode(string okayMessage, BasicDialogNode okayDestination) : base()
     {
         _nexts = new[] {new DialogTether(okayMessage, okayDestination)};
     }

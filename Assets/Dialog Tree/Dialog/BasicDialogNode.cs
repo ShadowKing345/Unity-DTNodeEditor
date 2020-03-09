@@ -2,9 +2,9 @@
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Dialog/Dialog Types/Simple Dialog")]
-public class DialogBase : ScriptableObject
+public class BasicDialogNode : ScriptableObject
 {
-    public DialogBase _previous;
+    public BasicDialogNode _previous;
     public DialogTether[] _nexts;
     
     public string _id;

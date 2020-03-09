@@ -12,7 +12,7 @@ public class DialogManager : MonoBehaviour
     }
 
     private DialogTree _tree;
-    private DialogBase _currentDialog;
+    private BasicDialogNode _currentBasicDialog;
     
     [Serializable]
     public class DialogTreeEvent : UnityEvent<DialogTree> {}
@@ -20,7 +20,7 @@ public class DialogManager : MonoBehaviour
     public UnityEvent onDialogEnd;
 
     [Serializable]
-    public class DialogEvent : UnityEvent<DialogBase> {}
+    public class DialogEvent : UnityEvent<BasicDialogNode> {}
     public DialogEvent onDialogBoxBegin;
     public UnityEvent onDialogBoxEnd;
     
@@ -39,7 +39,7 @@ public class DialogManager : MonoBehaviour
     {
         if (_tree)
         {
-            Debug.LogError("A dialog has already started. You cannot start a new one.");
+            Debug.LogError("A basicDialog has already started. You cannot start a new one.");
             return;
         }
         
@@ -49,18 +49,18 @@ public class DialogManager : MonoBehaviour
         SetDialogBox(tree._start_node);
     }
 
-    public void SetDialogBox(DialogBase dialog)
+    public void SetDialogBox(BasicDialogNode basicDialog)
     {
-        if (dialog == null)
+        if (basicDialog == null)
         {
             TerminateDialog(); 
             return;
         }
 
-        _currentDialog = dialog;
-        onDialogBoxBegin.Invoke(dialog);
+        _currentBasicDialog = basicDialog;
+        onDialogBoxBegin.Invoke(basicDialog);
 
-        CheckIfBranching(dialog._nexts);
+        CheckIfBranching(basicDialog._nexts);
     }
 
     public void CheckIfBranching(DialogTether[] tethers)
@@ -77,7 +77,7 @@ public class DialogManager : MonoBehaviour
     
     public void BranchChosen()
     {
-        DialogTether tether = _currentDialog._nexts[0];
+        DialogTether tether = _currentBasicDialog._nexts[0];
 
         if (tether != null && tether._destination == null)
         {
@@ -88,14 +88,14 @@ public class DialogManager : MonoBehaviour
         onPathChosen.Invoke(tether);
         onDialogBoxEnd.Invoke();
         
-        Progress(_currentDialog._nexts[0]);
+        Progress(_currentBasicDialog._nexts[0]);
     }
 
     public void BranchChosen(int pathIndex)
     {
-        if(_currentDialog._nexts.Length-1 < pathIndex) BranchChosen();
+        if(_currentBasicDialog._nexts.Length-1 < pathIndex) BranchChosen();
         
-        DialogTether tether = _currentDialog._nexts[pathIndex];
+        DialogTether tether = _currentBasicDialog._nexts[pathIndex];
         if (tether._destination == null)
         {
             onPathChosen.Invoke(null);
@@ -106,7 +106,7 @@ public class DialogManager : MonoBehaviour
         onPathChosen.Invoke(tether);
         onDialogBoxEnd.Invoke();
 
-        Progress(_currentDialog._nexts[pathIndex]);
+        Progress(_currentBasicDialog._nexts[pathIndex]);
     }
 
     public void Progress(DialogTether tether)
@@ -114,16 +114,16 @@ public class DialogManager : MonoBehaviour
         if (tether == null)
         {
             Debug.LogError(
-                "Tether on Progress method is null. This is an unexpected state and will terminate the dialog to protect any additional scripts.");
+                "Tether on Progress method is null. This is an unexpected state and will terminate the basicDialog to protect any additional scripts.");
             TerminateDialog();
             return;
         }
 
         onProgress.Invoke(tether);
 
-        if (_currentDialog._shouldFireScriptEvents)
+        if (_currentBasicDialog._shouldFireScriptEvents)
         {
-            _currentDialog._scriptEvents.Invoke();
+            _currentBasicDialog._scriptEvents.Invoke();
             onDialogBoxScriptFire.Invoke();
         }
 
@@ -140,12 +140,12 @@ public class DialogManager : MonoBehaviour
     {
         if (!_tree)
         {
-            Debug.LogError("There is no dialog running. You cannot terminate one.");
+            Debug.LogError("There is no basicDialog running. You cannot terminate one.");
             return;
         }
 
         _tree = null;
-        _currentDialog = null;
+        _currentBasicDialog = null;
         onDialogEnd.Invoke();
     }
 }

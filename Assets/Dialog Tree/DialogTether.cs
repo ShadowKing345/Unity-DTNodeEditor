@@ -4,20 +4,20 @@
 public class DialogTether
 {
     public string _text;
-    public DialogBase _destination;
+    public BasicDialogNode _destination;
 
     public DialogTether(string text)
     {
         _text = text;
     }
     
-    public DialogTether(string text, DialogBase destination)
+    public DialogTether(string text, BasicDialogNode destination)
     {
         _text = text;
         _destination = destination;
     }
 
-    public DialogTether(DialogBase destination)
+    public DialogTether(BasicDialogNode destination)
     {
         _text = "";
         _destination = destination;

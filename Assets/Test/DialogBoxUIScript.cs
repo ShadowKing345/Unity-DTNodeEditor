@@ -70,10 +70,10 @@ public class DialogBoxUIScript : MonoBehaviour
         ClearDialogBox();
     }
     
-    public void OnDialogBoxBegin(DialogBase dialog)
+    public void OnDialogBoxBegin(BasicDialogNode basicDialog)
     {
         Debug.Log("Current Dialog begins.");
-        mainText.text = dialog._text;
+        mainText.text = basicDialog._text;
     }
 
     public void OnDialogBoxEnd()
