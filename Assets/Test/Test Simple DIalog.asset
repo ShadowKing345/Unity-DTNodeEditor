@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Test Simple DIalog
   m_EditorClassIdentifier: 
   _previous: {fileID: 0}
-  _nexts: []
+  _nexts:
+  - _text: 
+    _destination: {fileID: 11400000, guid: 03eeba5c4b6e73f48ac33a9de7349562, type: 2}
   _id: 
   _title: 
-  _text: 
+  _text: This is a simple Dialog Box
   _shouldFireScriptEvents: 0
   _scriptEvents:
     m_PersistentCalls:

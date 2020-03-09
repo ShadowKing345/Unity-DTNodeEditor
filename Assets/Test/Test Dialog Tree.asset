@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ccce0297386a343bc6bd0dbd9de75c, type: 3}
-  m_Name: New Dialog_Tree
+  m_Name: Test Dialog Tree
   m_EditorClassIdentifier: 
   _id: 
-  _start_node: {fileID: 0}
-  _node_references: []
+  _start_node: {fileID: 11400000, guid: 5fd917fb151c49a429a91093b79320f6, type: 2}
+  _node_references:
+  - {fileID: 11400000, guid: 03eeba5c4b6e73f48ac33a9de7349562, type: 2}
+  - {fileID: 11400000, guid: 5fd917fb151c49a429a91093b79320f6, type: 2}
+  - {fileID: 11400000, guid: 559a7152e56147c47958ce58caa95ef2, type: 2}

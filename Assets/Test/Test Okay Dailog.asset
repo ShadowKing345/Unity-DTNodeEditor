@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0799ffd8c646dd42b42bb866e5dece6, type: 3}
   m_Name: Test Okay Dailog
   m_EditorClassIdentifier: 
-  _previous: {fileID: 0}
+  _previous: {fileID: 11400000, guid: 5fd917fb151c49a429a91093b79320f6, type: 2}
   _nexts:
   - _text: Okay
-    _destination: {fileID: 0}
+    _destination: {fileID: 11400000, guid: 559a7152e56147c47958ce58caa95ef2, type: 2}
   _id: 
   _title: 
-  _text: 
+  _text: This box has a okay message.
   _shouldFireScriptEvents: 0
   _scriptEvents:
     m_PersistentCalls:

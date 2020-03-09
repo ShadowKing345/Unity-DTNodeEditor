@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Dialog/Dialog Types/Okay Dialog")]
 public class Dialog_Okay : DialogBase

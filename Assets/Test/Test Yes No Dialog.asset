@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a671b34c2db059843ab19800b023ff89, type: 3}
   m_Name: Test Yes No Dialog
   m_EditorClassIdentifier: 
-  _previous: {fileID: 0}
+  _previous: {fileID: 11400000, guid: 03eeba5c4b6e73f48ac33a9de7349562, type: 2}
   _nexts:
   - _text: Yes
-    _destination: {fileID: 0}
+    _destination: {fileID: 11400000, guid: 5fd917fb151c49a429a91093b79320f6, type: 2}
   - _text: No
     _destination: {fileID: 0}
   _id: 
   _title: 
-  _text: 
+  _text: This is a 2 branch dialog box. Do you want you to repeat.
   _shouldFireScriptEvents: 0
   _scriptEvents:
     m_PersistentCalls:
