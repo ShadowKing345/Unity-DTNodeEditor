@@ -18,7 +18,6 @@ MonoBehaviour:
     _destination: {fileID: 11400000, guid: 5fd917fb151c49a429a91093b79320f6, type: 2}
   - _text: No
     _destination: {fileID: 0}
-  _id: 
   _title: 
   _text: This is a 2 branch dialog box. Do you want you to repeat.
   _shouldFireScriptEvents: 0

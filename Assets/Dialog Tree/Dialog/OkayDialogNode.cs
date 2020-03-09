@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 
-/**
- * This is just an asset template for an Okay Dialog Node.
- */
+///<summary>This is just an asset template for an Okay Dialog Node.</summary>
 [CreateAssetMenu(menuName = "Dialog/Dialog Types/Okay Dialog")]
 public class OkayDialogNode : BasicDialogNode
 {
