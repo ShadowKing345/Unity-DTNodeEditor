@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class DialogBoxUIScript : MonoBehaviour
 {
@@ -95,8 +94,7 @@ public class DialogBoxUIScript : MonoBehaviour
         {
             GameObject optionGameObject =
                 Instantiate(_optionGameObjectPrefab, _chooserContentGameObject.transform, false);
-            optionGameObject.GetComponent<ChooserScript>()._index = i;
-            optionGameObject.GetComponent<ChooserScript>().SetText(tethers[i]._text);
+            optionGameObject.GetComponent<ChooserScript>().Set(tethers[i]._text, i);
         }
     }
 
