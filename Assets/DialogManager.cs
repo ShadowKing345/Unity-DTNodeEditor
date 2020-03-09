@@ -3,16 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/**
+ * <summary>
+ * The script used to handel dialog trees.
+ * It is meant to be a single instance script.
+ * </summary>
+ */
 public class DialogManager : MonoBehaviour
 {
+    
+    
+    //Use this to get a single instance.
     public static DialogManager instance;
 
+    //The tree in use.
     private DialogTree _tree;
+    //The current Dialog Node active.
     private BasicDialogNode _currentBasicDialog;
+    //A history of what Dialog nodes where there.
     public Stack<BasicDialogNode> HistoryQueue { get; } = new Stack<BasicDialogNode>();
 
     public void Awake()
     {
+        //Ensure that the latest creation of Dialog manager is the current instance.
         instance = this;
     }
     
@@ -37,6 +50,10 @@ public class DialogManager : MonoBehaviour
 
     public UnityEvent onDialogBoxScriptFire;
     
+    /**
+     * <summary>This function starts the dialog.</summary>
+     * <param name="tree">The tree will be used to store what is the current tree and to get the starting point node.</param>
+     */
     public void StartDialog(DialogTree tree)
     {
         if (_tree)
@@ -52,7 +69,6 @@ public class DialogManager : MonoBehaviour
      
         SetDialogBox(tree._startNode);
     }
-
     public void SetDialogBox(BasicDialogNode basicDialog)
     {
         if (basicDialog == null)
