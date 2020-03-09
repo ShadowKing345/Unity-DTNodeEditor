@@ -61,7 +61,7 @@ public class DialogManager : MonoBehaviour
             return;
         }
 
-        if (HistoryQueue.Peek() != null)
+        if (HistoryQueue.Count != 0)
         {
             basicDialog._previous = HistoryQueue.Peek();
         }
