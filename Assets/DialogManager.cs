@@ -72,7 +72,7 @@ public class DialogManager : MonoBehaviour
 
         CheckIfBranching(basicDialog._nexts);
     }
-
+    
     public void CheckIfBranching(DialogTether[] tethers)
     {
         if (tethers.Length > 1)
@@ -100,7 +100,7 @@ public class DialogManager : MonoBehaviour
         
         Progress(_currentBasicDialog._nexts[0]);
     }
-
+    
     public void BranchChosen(int pathIndex)
     {
         if(_currentBasicDialog._nexts.Length-1 < pathIndex) BranchChosen();
@@ -119,20 +119,6 @@ public class DialogManager : MonoBehaviour
         Progress(_currentBasicDialog._nexts[pathIndex]);
     }
 
-    public void GoBack()
-    {
-        if (_currentBasicDialog._previous == null)
-        {
-            TerminateDialog();
-        }
-
-        DialogTether tempTether = new DialogTether(_currentBasicDialog._previous);
-   
-        onPathChosen.Invoke(tempTether);
-        onDialogBoxEnd.Invoke();
-
-        Progress(tempTether);
-    }
 
     public void Progress(DialogTether tether)
     {
