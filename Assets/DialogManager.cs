@@ -50,7 +50,7 @@ public class DialogManager : MonoBehaviour
         _tree = tree;
         onDialogBegin.Invoke(tree);
      
-        SetDialogBox(tree._start_node);
+        SetDialogBox(tree._startNode);
     }
 
     public void SetDialogBox(BasicDialogNode basicDialog)
