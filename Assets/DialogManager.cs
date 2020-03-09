@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,13 +7,14 @@ public class DialogManager : MonoBehaviour
 {
     public static DialogManager instance;
 
+    private DialogTree _tree;
+    private BasicDialogNode _currentBasicDialog;
+    public Stack<BasicDialogNode> HistoryQueue { get; } = new Stack<BasicDialogNode>();
+
     public void Awake()
     {
         instance = this;
     }
-
-    private DialogTree _tree;
-    private BasicDialogNode _currentBasicDialog;
     
     [Serializable]
     public class DialogTreeEvent : UnityEvent<DialogTree> {}
@@ -39,9 +41,11 @@ public class DialogManager : MonoBehaviour
     {
         if (_tree)
         {
-            Debug.LogError("A basicDialog has already started. You cannot start a new one.");
+            Debug.LogError("A Dialog has already started. You cannot start a new one.");
             return;
         }
+
+        HistoryQueue.Clear();
         
         _tree = tree;
         onDialogBegin.Invoke(tree);
@@ -57,7 +61,13 @@ public class DialogManager : MonoBehaviour
             return;
         }
 
+        if (HistoryQueue.Peek() != null)
+        {
+            basicDialog._previous = HistoryQueue.Peek();
+        }
+
         _currentBasicDialog = basicDialog;
+        HistoryQueue.Push(basicDialog);
         onDialogBoxBegin.Invoke(basicDialog);
 
         CheckIfBranching(basicDialog._nexts);
@@ -109,12 +119,27 @@ public class DialogManager : MonoBehaviour
         Progress(_currentBasicDialog._nexts[pathIndex]);
     }
 
+    public void GoBack()
+    {
+        if (_currentBasicDialog._previous == null)
+        {
+            TerminateDialog();
+        }
+
+        DialogTether tempTether = new DialogTether(_currentBasicDialog._previous);
+   
+        onPathChosen.Invoke(tempTether);
+        onDialogBoxEnd.Invoke();
+
+        Progress(tempTether);
+    }
+
     public void Progress(DialogTether tether)
     {
         if (tether == null)
         {
             Debug.LogError(
-                "Tether on Progress method is null. This is an unexpected state and will terminate the basicDialog to protect any additional scripts.");
+                "Tether on Progress method is null. This is an unexpected state and will terminate the Dialog to protect any additional scripts.");
             TerminateDialog();
             return;
         }
@@ -140,12 +165,13 @@ public class DialogManager : MonoBehaviour
     {
         if (!_tree)
         {
-            Debug.LogError("There is no basicDialog running. You cannot terminate one.");
+            Debug.LogError("There is no Dialog running. You cannot terminate one.");
             return;
         }
-
+        
         _tree = null;
         _currentBasicDialog = null;
+        HistoryQueue.Clear();
         onDialogEnd.Invoke();
     }
 }
