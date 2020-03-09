@@ -36,6 +36,8 @@ public class DialogManager : MonoBehaviour
 
     #region Events Variables
 
+    //A series of events used through out the Dialog Manager.
+    
     [Serializable]
     public class DialogTreeEvent : UnityEvent<DialogTree>
     {
