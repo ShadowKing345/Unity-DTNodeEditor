@@ -17,7 +17,7 @@ public class ChooserScript : MonoBehaviour
     {
         Debug.Log("Option " + _mainText.text + " has been chosen.");
         StartCoroutine(_parentScript.ChooseEnumerator(_index));
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public void SetText(string text)

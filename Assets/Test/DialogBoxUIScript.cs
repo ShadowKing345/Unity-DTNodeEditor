@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,6 @@ public class DialogBoxUIScript : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null) throw new Exception("Cannot have more then one DialogBoxUiScript");
         instance = this;
     }
 
@@ -42,6 +42,12 @@ public class DialogBoxUIScript : MonoBehaviour
             _dialogManager.StartDialog(DialogTree);
         }
         
+    }
+
+    public void PreviousDialogButton()
+    {
+        // if (isInDialog)
+        //     _dialogManager.GoBack();
     }
     
     public void NextDialogButton()
@@ -125,7 +131,7 @@ public class DialogBoxUIScript : MonoBehaviour
 
     public IEnumerator ChooseEnumerator(int index)
     {
-        yield return null;
         _dialogManager.BranchChosen(index);
+        yield return null;
     }
 }
